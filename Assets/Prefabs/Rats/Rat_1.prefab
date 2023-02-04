@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 591065152}
   - component: {fileID: 7459586930360746285}
   - component: {fileID: 6222261750389328729}
+  - component: {fileID: 8113953757982261068}
   m_Layer: 0
   m_Name: Rat_1
   m_TagString: Untagged
@@ -244,3 +245,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &8113953757982261068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7459586930360746281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56abb9697200a614ab529c80f5cf4e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
