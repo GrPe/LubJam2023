@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2285023748647551302}
   - component: {fileID: 2285023748647551300}
   - component: {fileID: 2285023748647551296}
+  - component: {fileID: 5778614311794604679}
   - component: {fileID: 2285023748647551297}
   m_Layer: 0
   m_Name: Rat_2
@@ -33,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 1482529305527511124}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2285023748647551300
 MonoBehaviour:
@@ -64,9 +65,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762790b1299cd9a4bbfc8f946bbe955e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackAnimation: {fileID: 1387822561}
   AttackDistance: 2
   Damage: 1
   AttackColdown: 2
+--- !u!114 &5778614311794604679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285023748647551301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f95db551e54afa42b284ff535047a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &2285023748647551297
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -99,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482529305527511124}
   - component: {fileID: 498550942156457676}
+  - component: {fileID: 1387822561}
   m_Layer: 0
   m_Name: Enemy_kk
   m_TagString: Untagged
@@ -173,3 +188,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1387822561
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027088828133417938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 693388d84c399044d8a59d71fe642f1e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

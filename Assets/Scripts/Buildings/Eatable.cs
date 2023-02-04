@@ -27,7 +27,6 @@ public class Eatable : MonoBehaviour
         if(_durability <= 0)
         {
             FindObjectOfType<BuildingsCache>().RefreshCache();
-            Debug.LogWarning("building consumed");
             Destroy(gameObject);
         }
     }

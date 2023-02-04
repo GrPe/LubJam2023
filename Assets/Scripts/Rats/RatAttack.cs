@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RatAttack : MonoBehaviour
 {
+    public Animator AttackAnimation;
     public float AttackDistance;
     public int Damage = 1;
     public float AttackColdown;
@@ -17,9 +18,6 @@ public class RatAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.LogWarning($"{_movement.Agent.remainingDistance}:{_movement.Agent.isStopped}");
-
         TryAttack();
     }
 
@@ -38,6 +36,8 @@ public class RatAttack : MonoBehaviour
             return;
         }
 
+        AttackAnimation.Play("RatIdleAnimation");
+        AttackAnimation.Play("RatAttackAnimation");
         var eatable = _movement.Target.gameObject.GetComponent<Eatable>();
         eatable.DealDamage(Damage);
         _lastAttackTime = Time.time;

@@ -60,7 +60,6 @@ public class RatMovement : MonoBehaviour
     private void SetDestination(Transform destination)
     {
         Target = destination;
-        Agent.isStopped = false;
         Agent.SetDestination(destination.position);
     }
 }
