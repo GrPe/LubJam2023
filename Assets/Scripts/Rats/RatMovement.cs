@@ -37,6 +37,7 @@ public class RatMovement : MonoBehaviour
         {
             if(_potentialMeals == null)
             {
+                Debug.LogWarning("Rat is disconnected with BuildingsCache!!!!!!!!!");
                 _potentialMeals = FindObjectOfType<BuildingsCache>();
             }
 
@@ -44,6 +45,7 @@ public class RatMovement : MonoBehaviour
 
             var meal = _potentialMeals
                 .BuildingsToEat
+                .Where(x => x != null)
                 .FirstOrDefault(b => Vector3.Distance(transform.position, b.transform.position) <= AreaOfSight);
 
             if (meal != null)
@@ -52,7 +54,12 @@ public class RatMovement : MonoBehaviour
                 return;
             }
 
-            var nearestDecoy = _potentialMeals.Decoys.OrderBy(d => Vector3.Distance(Transform.position, d.transform.position)).FirstOrDefault();
+            var nearestDecoy = _potentialMeals
+                .Decoys
+                .Where(x => x != null)
+                .OrderBy(d => Vector3.Distance(Transform.position, d.transform.position))
+                .FirstOrDefault();
+
             if (nearestDecoy != null)
             {
                 SetDestination(nearestDecoy.transform);
@@ -74,5 +81,11 @@ public class RatMovement : MonoBehaviour
     {
         Target = destination;
         Agent.SetDestination(destination.position);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AreaOfSight);
     }
 }

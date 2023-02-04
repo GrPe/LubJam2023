@@ -34,7 +34,11 @@ public class RatAttack : MonoBehaviour
             return;
         }
 
-        _movement.Agent.isStopped = true;
+        if(!_movement.Agent.isStopped)
+        {
+            _lastAttackTime = Time.time + (AttackColdown / 5f);
+            _movement.Agent.isStopped = true;
+        }
 
         if (_lastAttackTime + AttackColdown >= Time.time)
         {
@@ -46,5 +50,11 @@ public class RatAttack : MonoBehaviour
         var eatable = _movement.Target.gameObject.GetComponent<Eatable>();
         eatable.DealDamage(Damage);
         _lastAttackTime = Time.time;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, AttackDistance);
     }
 }

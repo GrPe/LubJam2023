@@ -6,20 +6,27 @@ public class RatGenerator : MonoBehaviour
     public GameObject[] Lairs;
     public PlaceBuildings PlaceBuildings;
 
-    private float _nextSpawnTime = 0;
+    [SerializeField] private float _nextSpawnTime = 0;
+    [SerializeField] private float timePassed = 1;
+
+    private const float MinTime = 5;
+    private const float MaxTime = 15;
 
     private void Start()
     {
-        RatRush(3, 6);
+        RatRush(2, 4);
         _nextSpawnTime += Time.time + Random.Range(1, 3);
     }
 
     private void Update()
     {
-        if(_nextSpawnTime <= Time.time)
+        timePassed += Time.deltaTime;
+
+        if (_nextSpawnTime <= Time.time)
         {
-            RatRush(3, 6);
-            _nextSpawnTime = Time.time + Random.Range(1, 3);
+            RatRush(1, 4);
+            _nextSpawnTime = 
+                Time.time + Random.Range(MinTime / Mathf.Max(1, timePassed / 60), MaxTime / Mathf.Max(1, timePassed / 60));
         }
     }
 
