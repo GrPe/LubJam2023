@@ -56,7 +56,11 @@ public class RatMovement : MonoBehaviour
             }
             else
             {
-                SetDestination(FindObjectOfType<Turnip>().transform);
+                var turnip = FindObjectOfType<Turnip>();
+                if(turnip != null)
+                {
+                    SetDestination(turnip.transform);
+                }
                 return;
             }
         }

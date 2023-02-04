@@ -23,6 +23,11 @@ public class RatAttack : MonoBehaviour
 
     public void TryAttack()
     {
+        if(_movement.Target == null)
+        {
+            return;
+        }
+
         if (_movement.Agent.remainingDistance >= AttackDistance)
         {
             _movement.Agent.isStopped = false;

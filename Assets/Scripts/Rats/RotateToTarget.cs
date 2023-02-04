@@ -15,6 +15,11 @@ public class RotateToTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_movement.Target == null)
+        {
+            return;
+        }
+
         if(_movement.Target.position.x - transform.position.x <= 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);

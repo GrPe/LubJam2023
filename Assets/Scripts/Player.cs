@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Transform _playerTransform;
     public float _speed;

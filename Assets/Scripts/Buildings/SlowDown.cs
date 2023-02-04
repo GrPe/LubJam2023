@@ -9,14 +9,16 @@ public class SlowDown : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var rat = collision.gameObject.GetComponent<RatMovement>();
-        rat.SlowHimDown(Power);
-
-        Durability--;
-
-        if(Durability <= 0)
+        if(collision.gameObject.TryGetComponent<RatMovement>(out var rat))
         {
-            Destroy(gameObject);
+            rat.SlowHimDown(Power);
+
+            Durability--;
+
+            if (Durability <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
