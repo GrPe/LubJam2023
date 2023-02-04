@@ -21,7 +21,6 @@ public class RatMovement : MonoBehaviour
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
         Transform = transform;
-        Agent.SetDestination(Target.position);
         _potentialMeals = FindObjectOfType<BuildingsCache>();
         _lastRething = Time.time;
     }
