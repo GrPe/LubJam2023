@@ -1158,6 +1158,7 @@ GameObject:
   - component: {fileID: 1844359806}
   - component: {fileID: 1844359805}
   - component: {fileID: 1844359808}
+  - component: {fileID: 1844359809}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -1262,6 +1263,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildingsToEat: []
   Decoys: []
+--- !u!114 &1844359809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844359804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2576540dda69872428d96da8ca2d404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RatsPrefabs:
+  - {fileID: 7459586930360746281, guid: 66f164a0d810d884ea638012d542ac6b, type: 3}
+  - {fileID: 2285023748647551301, guid: 2575685b6a03bc94b9343e9db7c97030, type: 3}
+  - {fileID: 6153777727146039471, guid: 4004d6eb822cdfb4fa7ad34407fb1b14, type: 3}
+  Lairs:
+  - {fileID: 593866139}
+  - {fileID: 1259673132}
+  - {fileID: 580008438}
+  - {fileID: 1112217997}
+  - {fileID: 370135807}
 --- !u!1 &2008287927
 GameObject:
   m_ObjectHideFlags: 0
