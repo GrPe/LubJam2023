@@ -26,6 +26,11 @@ public class RatMovement : MonoBehaviour
         _lastRething = Time.time;
     }
 
+    public void SlowHimDown(float power)
+    {
+        Agent.speed /= power;
+    }
+
     // Update is called once per frame
     void Update()
     {
