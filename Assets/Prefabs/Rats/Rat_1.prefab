@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7459586929490651646}
   - component: {fileID: 7459586929490651617}
   - component: {fileID: 1912643657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Original
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7459586930360746285}
   - component: {fileID: 6222261750389328729}
   - component: {fileID: 8113953757982261068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rat_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

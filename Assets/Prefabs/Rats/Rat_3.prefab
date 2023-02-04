@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6256322024480026947}
   - component: {fileID: 16798694182265009}
   - component: {fileID: 1359112860}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Enemy_Original \u2014 kopia"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6153777727146039467}
   - component: {fileID: 2197473113001106517}
   - component: {fileID: 6284681183913431154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rat_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,4 +257,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56abb9697200a614ab529c80f5cf4e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 5

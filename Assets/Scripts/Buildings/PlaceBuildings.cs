@@ -51,6 +51,7 @@ public class PlaceBuildings : MonoBehaviour
 
         if (towers.Length == 0)
         {
+
             return true;
         }
 
