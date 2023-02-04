@@ -53,8 +53,9 @@ MonoBehaviour:
   Target: {fileID: 0}
   Transform: {fileID: 2285023748647551302}
   AreaOfSight: 3
-  ThinkingTime: 0.5
+  ThinkingTime: 1
   Agent: {fileID: 0}
+  _potentialMeals: {fileID: 0}
 --- !u!114 &2285023748647551296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackAnimation: {fileID: 1387822561}
-  AttackDistance: 2
+  AttackDistance: 1
   Damage: 1
   AttackColdown: 2
 --- !u!114 &5778614311794604679

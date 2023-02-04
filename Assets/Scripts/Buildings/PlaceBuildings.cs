@@ -8,12 +8,21 @@ public class PlaceBuildings : MonoBehaviour
     public GameObject SloweringTower;
     public GameObject DecoyTower;
     public float Distance = 3f;
+    public int Coins = 3;
+
+
+    [SerializeField] private BuildingsCache buildingsCache;
 
     void Start()
     {
         if (Player == null)
         {
             Player = FindObjectOfType<Player>().transform;
+        }
+
+        if (buildingsCache == null)
+        {
+            buildingsCache = FindObjectOfType<BuildingsCache>();
         }
     }
 
@@ -25,6 +34,8 @@ public class PlaceBuildings : MonoBehaviour
             if (CanPlaceTower())
             {
                 var tower = Instantiate(AttackTower, Player.transform.position, Quaternion.Euler(0, 0, 0));
+                tower.GetComponent<Eatable>().BuildingsCache = buildingsCache;
+                buildingsCache.AddObject(tower);
             }
         }
 
@@ -33,6 +44,7 @@ public class PlaceBuildings : MonoBehaviour
             if (CanPlaceTower())
             {
                 var tower = Instantiate(SloweringTower, Player.transform.position, Quaternion.Euler(0, 0, 0));
+                buildingsCache.AddObject(tower);
             }
         }
 
@@ -41,6 +53,8 @@ public class PlaceBuildings : MonoBehaviour
             if (CanPlaceTower())
             {
                 var tower = Instantiate(DecoyTower, Player.transform.position, Quaternion.Euler(0, 0, 0));
+                tower.GetComponent<Eatable>().BuildingsCache = buildingsCache;
+                buildingsCache.AddObject(tower);
             }
         }
     }

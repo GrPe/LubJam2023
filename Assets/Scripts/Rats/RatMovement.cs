@@ -11,7 +11,7 @@ public class RatMovement : MonoBehaviour
     public float ThinkingTime = 1;
 
     public NavMeshAgent Agent;
-    private BuildingsCache _potentialMeals;
+    [SerializeField] private BuildingsCache _potentialMeals;
     private float _lastRething;
 
     // Start is called before the first frame update

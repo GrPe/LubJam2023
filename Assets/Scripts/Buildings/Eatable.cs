@@ -5,18 +5,7 @@ using UnityEngine;
 public class Eatable : MonoBehaviour
 {
     public int _durability = 3;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public BuildingsCache BuildingsCache;
 
     public bool IsAte() => _durability <= 0;
 
@@ -24,9 +13,12 @@ public class Eatable : MonoBehaviour
     {
         _durability -= damage;
 
-        if(_durability <= 0)
+        if(_durability == 0)
         {
-            FindObjectOfType<BuildingsCache>().RefreshCache();
+            if(BuildingsCache != null)
+            {
+                BuildingsCache.RemoveObject(gameObject);
+            }
             Destroy(gameObject);
         }
     }

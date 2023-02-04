@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b210ffa4d50ce439d9fdaa0ed59974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durability: 5
+  _durability: 50
+  BuildingsCache: {fileID: 0}
 --- !u!114 &1408721421
 MonoBehaviour:
   m_ObjectHideFlags: 0

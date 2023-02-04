@@ -1,35 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingsCache : MonoBehaviour
 {
-    public Eatable[] BuildingsToEat = Array.Empty<Eatable>();
-    public Decoy[] Decoys = Array.Empty<Decoy>();
+    public List<GameObject> BuildingsToEat = new();
+    public List<GameObject> Decoys = new();
 
-    private void Start()
+    public void RemoveObject(GameObject go)
     {
-        RefreshCache();
-    }
-
-    private void Update()
-    {
-
-    }
-
-    public void RefreshCache()
-    {
-        BuildingsToEat = FindObjectsOfType<Eatable>().Where(x => x != null && !x.IsAte()).ToArray();
-        var tempDecoys = new List<Decoy>();
-        foreach(var b in BuildingsToEat)
+        if(go.TryGetComponent<Decoy>(out var decoy))
         {
-            if(b.TryGetComponent<Decoy>(out Decoy decoy))
-            {
-                tempDecoys.Add(decoy);
-            }
+            Decoys.Remove(go);
         }
 
-        Decoys = tempDecoys.ToArray();
+        if (go.TryGetComponent<Eatable>(out var eatable))
+        {
+            BuildingsToEat.Remove(go);
+        }
+    }
+
+    public void AddObject(GameObject go)
+    {
+        if (go.TryGetComponent<Decoy>(out var decoy))
+        {
+            Decoys.Add(go);
+        }
+
+        if(go.TryGetComponent<Eatable>(out var eatable))
+        {
+            BuildingsToEat.Add(go);
+        }
     }
 }
