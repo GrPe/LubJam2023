@@ -27,7 +27,7 @@ public class RatMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         if (Target == null || Target.gameObject == null || Target.gameObject.IsDestroyed() || (_lastRething + ThinkingTime < Time.time))
         {
