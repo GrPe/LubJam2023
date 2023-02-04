@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class Turnip : MonoBehaviour
 {
+    public GameObject UI;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDestroy()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UI.SetActive(true);        
     }
 }
