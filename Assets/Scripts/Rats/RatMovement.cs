@@ -36,6 +36,11 @@ public class RatMovement : MonoBehaviour
     {
         if (Target == null || Target.gameObject == null || Target.gameObject.IsDestroyed() || (_lastRething + ThinkingTime < Time.time))
         {
+            if(_potentialMeals == null)
+            {
+                _potentialMeals = FindObjectOfType<BuildingsCache>();
+            }
+
             _lastRething = Time.time;
 
             var meal = _potentialMeals

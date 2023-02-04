@@ -5,7 +5,22 @@ public class RatGenerator : MonoBehaviour
     public GameObject[] RatsPrefabs;
     public GameObject[] Lairs;
 
-    public int RatRush(int min, int max)
+    private int CurrentNumberOfRats = 0;
+
+    private void Start()
+    {
+        CurrentNumberOfRats += RatRush(4, 10);
+    }
+
+    private void Update()
+    {
+        if (CurrentNumberOfRats <= 0)
+        {
+
+        }
+    }
+
+    private int RatRush(int min, int max)
     {
         var lair = (int)Random.Range(0, Lairs.Length);
 
@@ -17,5 +32,10 @@ public class RatGenerator : MonoBehaviour
         }
 
         return ratsCount;
+    }
+
+    public void RatKilled()
+    {
+        CurrentNumberOfRats--;
     }
 }
