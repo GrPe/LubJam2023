@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RatsLair : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform[] _spawnerPoints;
+
     void Start()
     {
         
