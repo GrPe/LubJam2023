@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -8,9 +9,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private ScoresController scoresController;
 
     [SerializeField] private RatGenerator ratGenerator;
+    [SerializeField] private TMP_Text hptext;
+
 
     private void Awake()
     {
+        hptext.text= health.ToString();
         ratGenerator = FindObjectOfType<RatGenerator>();
         scoresController = ratGenerator.GetScoresController();
     }
@@ -28,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             health -= damage;
+            hptext.text = health.ToString();
         }
     }
 
