@@ -13,5 +13,6 @@ public class ScoresController : MonoBehaviour
         scores+=addPoint;
         scoresText.text=scores.ToString();
     }
+    public int GetScores() { return scores; }
 
 }

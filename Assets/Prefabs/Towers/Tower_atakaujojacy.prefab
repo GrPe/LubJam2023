@@ -103,7 +103,7 @@ MonoBehaviour:
   projectilePref: {fileID: 6114898257544455454, guid: 471527ea938171e408bd4c7a01c04cbf, type: 3}
   spawnpoint: {fileID: 362018017328144510}
   fireRate: 2
-  spotSize: {x: 15, y: 15}
+  spotSize: {x: 20, y: 20}
   spotLayer:
     serializedVersion: 2
     m_Bits: 64

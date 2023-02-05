@@ -1,21 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private Transform _playerTransform;
     public float _speed;
-    public List<GameObject> playerAttak=new List<GameObject>();
+    public List<GameObject> playerAttak = new List<GameObject>();
     public float rateOfAttak = 1f;
+    public int costAttack = 2;
+    public ScoresController scoresController;
+
 
     private float timer = 0;
+    public float energy= 10;
+    public TMP_Text energyCount;
 
     void Start()
     {
         _playerTransform = transform;
-        foreach(GameObject obj in playerAttak)
+        energyCount.text= ((int)energy).ToString();
+        foreach (GameObject obj in playerAttak)
         {
             obj.SetActive(false);
         }
@@ -25,44 +32,34 @@ public class Player : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > rateOfAttak)
+        if (energy < 10)
         {
-            
-            if(timer>=rateOfAttak && timer < rateOfAttak + 1)
-            {
-                        playerAttak[0].SetActive(true);
-                        playerAttak[1].SetActive(false);
-                        playerAttak[2].SetActive(false);
-                        playerAttak[3].SetActive(false);
-            }
-            else if (timer >= rateOfAttak+1 && timer < rateOfAttak + 2)
-            {
-                        playerAttak[0].SetActive(false);
-                        playerAttak[1].SetActive(true);
-                        playerAttak[2].SetActive(false);
-                        playerAttak[3].SetActive(false);
-                    }
-            else if (timer >= rateOfAttak+2 && timer < rateOfAttak + 3)
-            {
-                        playerAttak[0].SetActive(false);
-                        playerAttak[1].SetActive(false);
-                        playerAttak[2].SetActive(true);
-                        playerAttak[3].SetActive(false);
-            }
-            else if (timer >= rateOfAttak+3 && timer < rateOfAttak + 4)
-            {
-                        playerAttak[0].SetActive(false);
-                        playerAttak[1].SetActive(false);
-                        playerAttak[2].SetActive(false);
-                        playerAttak[3].SetActive(true);
-                timer = 0f;
-                    
-            }
-
+            energy += Time.deltaTime;
+            energyCount.text = ((int)energy).ToString();
         }
+        if (timer > rateOfAttak && Input.GetKeyDown(KeyCode.Space) && energy>= costAttack)
+        {
+            //scoresController.SetScores(-costAttack);
+            energy-= costAttack;
+            energyCount.text = ((int)energy).ToString();
+            playerAttak[0].SetActive(true);
+            playerAttak[1].SetActive(true);
+            playerAttak[2].SetActive(true);
+            playerAttak[3].SetActive(true);
+            timer = 0;
+            StartCoroutine(DisableAtack());
+        }    
         MovePlayer();
     }
 
+    IEnumerator DisableAtack()
+    {
+        yield return new WaitForSeconds(.5f);
+        playerAttak[0].SetActive(false);
+        playerAttak[1].SetActive(false);
+        playerAttak[2].SetActive(false);
+        playerAttak[3].SetActive(false);
+    }
     private void MovePlayer()
     {
         float h = Input.GetAxisRaw("Horizontal");
