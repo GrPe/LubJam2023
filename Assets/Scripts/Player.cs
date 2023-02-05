@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float rateOfAttak = 1f;
     public int costAttack = 2;
     public ScoresController scoresController;
+    public GameObject special;
 
 
     private float timer = 0;
@@ -49,6 +50,10 @@ public class Player : MonoBehaviour
             timer = 0;
             StartCoroutine(DisableAtack());
         }    
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            special.SetActive(true);
+        }
         MovePlayer();
     }
 

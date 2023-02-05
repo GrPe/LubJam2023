@@ -8,6 +8,8 @@ public class RatGenerator : MonoBehaviour
     public PlaceBuildings PlaceBuildings;
     public ScoresController scoresController;
 
+    public int CurrentPhase { get => _phaseNumber; }
+
     [SerializeField] private float _nextPhaseTime = 0;
 
     [SerializeField] private float _preparationTime = 10f;
@@ -54,7 +56,7 @@ public class RatGenerator : MonoBehaviour
             {
                 var kingLair = Random.Range(0, Lairs.Length);
                 var king = Instantiate(TheGreatRatKing, Lairs[kingLair].transform.position, Quaternion.Euler(0, 0, 0), transform);
-                king.GetComponent<EnemyHealth>().DealDamage(-(_phaseNumber * Random.Range(1, 3)));
+                king.GetComponent<EnemyHealth>().DealDamage(-(_phaseNumber * 3 + Random.Range(2, 4)));
             }
 
             _nextPhaseTime = Time.time + _attackTime;
