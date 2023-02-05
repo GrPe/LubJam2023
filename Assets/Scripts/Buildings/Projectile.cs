@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private NavMeshAgent proAgent = null;
+    [SerializeField] private GameObject leaf;
     private Transform target = null;
     private int dmg = 1;
 
@@ -23,6 +24,7 @@ public class Projectile : MonoBehaviour
         if (target != null)
         {
             proAgent.SetDestination(target.position);
+            leaf.transform.RotateAround(leaf.transform.position,new Vector3(0,0,6),6f);
         }
         if (target==null)//time >= 5 || 
         {

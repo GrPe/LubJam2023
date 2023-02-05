@@ -5,6 +5,7 @@ public class RatGenerator : MonoBehaviour
     public GameObject[] RatsPrefabs;
     public GameObject[] Lairs;
     public PlaceBuildings PlaceBuildings;
+    public ScoresController scoresController;
 
     [SerializeField] private float _nextSpawnTime = 0;
     [SerializeField] private float timePassed = 1;
@@ -37,7 +38,9 @@ public class RatGenerator : MonoBehaviour
         for (var x = 0; x < ratsCount; x++)
         {
             var lair = (int)Random.Range(0, Lairs.Length);
-            Instantiate(RatsPrefabs[x % RatsPrefabs.Length], Lairs[lair].transform.position, Quaternion.Euler(0, 0, 0), transform);
+           //GameObject newRats = 
+                Instantiate(RatsPrefabs[x % RatsPrefabs.Length], Lairs[lair].transform.position, Quaternion.Euler(0, 0, 0), transform);
+            //newRats.gameObject.GetComponent<EnemyHealth>().SetScoresController(scoresController);
         }
 
         return ratsCount;
@@ -46,5 +49,9 @@ public class RatGenerator : MonoBehaviour
     public void RatKilled()
     {
         PlaceBuildings.Coins += 2;
+    }
+    public ScoresController GetScoresController()
+    {
+        return scoresController;
     }
 }
