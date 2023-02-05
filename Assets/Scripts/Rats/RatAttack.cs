@@ -9,6 +9,7 @@ public class RatAttack : MonoBehaviour
 
     private float _lastAttackTime = 0f;
     private RatMovement _movement;
+    [SerializeField] private float _firstAttackDelay = 0.2f;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class RatAttack : MonoBehaviour
 
         if(!_movement.Agent.isStopped)
         {
-            _lastAttackTime = Time.time + (AttackColdown / 5f);
+            _lastAttackTime = Time.time + _firstAttackDelay;
             _movement.Agent.isStopped = true;
         }
 
@@ -45,8 +46,8 @@ public class RatAttack : MonoBehaviour
             return;
         }
 
-        AttackAnimation.Play("RatIdleAnimation");
-        AttackAnimation.Play("RatAttackAnimation");
+        //AttackAnimation.Play("RatIdleAnimation");
+        //AttackAnimation.Play("RatAttackAnimation");
         var eatable = _movement.Target.gameObject.GetComponent<Eatable>();
         eatable.DealDamage(Damage);
         _lastAttackTime = Time.time;

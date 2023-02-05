@@ -9,7 +9,7 @@ public class RotateToTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _movement = GetComponent<RatMovement>();
+        _movement = gameObject.GetComponentInParent<RatMovement>();
     }
 
     // Update is called once per frame

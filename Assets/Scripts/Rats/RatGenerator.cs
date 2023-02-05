@@ -4,46 +4,62 @@ public class RatGenerator : MonoBehaviour
 {
     public GameObject[] RatsPrefabs;
     public GameObject[] Lairs;
+    public GameObject TheGreatRatKing;
     public PlaceBuildings PlaceBuildings;
     public ScoresController scoresController;
 
-    [SerializeField] private float _nextSpawnTime = 0;
-    [SerializeField] private float timePassed = 1;
+    [SerializeField] private float _nextPhaseTime = 0;
 
-    private const float MinTime = 5;
-    private const float MaxTime = 15;
+    [SerializeField] private float _preparationTime = 10f;
+    [SerializeField] private float _attackTime = 4f;
+
+    [SerializeField] private int _phaseNumber = 0;
+    [SerializeField] private int _szczurCount = 0;
+    [SerializeField] private int _currentSubphase = 0;
+
+    [SerializeField] private int _targetSubphases = 0;
+    private bool _attackPhase = false;
 
     private void Start()
     {
-        RatRush(2, 4);
-        _nextSpawnTime += Time.time + Random.Range(1, 3);
+        _nextPhaseTime += Time.time + _attackTime;
     }
 
     private void Update()
     {
-        timePassed += Time.deltaTime;
-
-        if (_nextSpawnTime <= Time.time)
+        if (_nextPhaseTime <= Time.time && _attackPhase == false)
         {
-            RatRush(1, 4);
-            _nextSpawnTime = 
-                Time.time + Random.Range(MinTime / Mathf.Max(1, timePassed / 60), MaxTime / Mathf.Max(1, timePassed / 60));
+            _currentSubphase = 1;
+            _targetSubphases = Random.Range(4, 6 + _phaseNumber);
+            _attackPhase = true;
+            _phaseNumber++;
         }
-    }
-
-    private int RatRush(int min, int max)
-    {
-        var ratsCount = (int)Random.Range(min, max);
-
-        for (var x = 0; x < ratsCount; x++)
+        else if (_nextPhaseTime <= Time.time)
         {
-            var lair = (int)Random.Range(0, Lairs.Length);
-           //GameObject newRats = 
+            if (_currentSubphase > _targetSubphases)
+            {
+                _nextPhaseTime = Time.time + _preparationTime;
+                _attackPhase = false;
+                return;
+            }
+
+            var rats = Random.Range(4 + _phaseNumber + _currentSubphase / 2, 7 + _phaseNumber * 2 + _currentSubphase);
+            for (var x = 0; x < rats; x++)
+            {
+                var lair = Random.Range(0, Lairs.Length);
                 Instantiate(RatsPrefabs[x % RatsPrefabs.Length], Lairs[lair].transform.position, Quaternion.Euler(0, 0, 0), transform);
-            //newRats.gameObject.GetComponent<EnemyHealth>().SetScoresController(scoresController);
-        }
+            }
 
-        return ratsCount;
+            if (_currentSubphase == _targetSubphases && _phaseNumber % 2 == 0) //The rat king!
+            {
+                var kingLair = Random.Range(0, Lairs.Length);
+                var king = Instantiate(TheGreatRatKing, Lairs[kingLair].transform.position, Quaternion.Euler(0, 0, 0), transform);
+                king.GetComponent<EnemyHealth>().DealDamage(-(_phaseNumber * Random.Range(1, 3)));
+            }
+
+            _nextPhaseTime = Time.time + _attackTime;
+            _currentSubphase++;
+        }
     }
 
     public ScoresController GetScoresController()

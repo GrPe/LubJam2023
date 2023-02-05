@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         timer += Time.deltaTime;
         if (energy < 10)
         {
-            energy += Time.deltaTime;
+            energy += Time.deltaTime / 1.5f;
             energyCount.text = ((int)energy).ToString();
         }
         if (timer > rateOfAttak && Input.GetKeyDown(KeyCode.Space) && energy>= costAttack)

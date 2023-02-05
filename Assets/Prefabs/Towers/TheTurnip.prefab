@@ -119,7 +119,7 @@ Transform:
   - {fileID: 7095089274633454843}
   - {fileID: 7095089274928182394}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7095089274901036963
 MonoBehaviour:
@@ -162,9 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b210ffa4d50ce439d9fdaa0ed59974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _durability: 30
+  _durability: 40
   BuildingsCache: {fileID: 0}
   isHQ: 1
+  isEnemy: 0
   hQHealthDisplay: {fileID: 7095089274901036965}
 --- !u!114 &7095089274901036965
 MonoBehaviour:

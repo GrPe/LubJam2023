@@ -24,9 +24,9 @@ public class Projectile : MonoBehaviour
         if (target != null)
         {
             proAgent.SetDestination(target.position);
-            leaf.transform.RotateAround(leaf.transform.position,new Vector3(0,0,6),6f);
+            leaf.transform.RotateAround(leaf.transform.position, new Vector3(0, 0, 12), 12f);
         }
-        if (target==null)//time >= 5 || 
+        if (target == null)//time >= 5 || 
         {
             Destroy(this.gameObject);
         }
@@ -34,7 +34,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyhealth)){
+        if (collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyhealth))
+        {
             enemyhealth.DealDamage(dmg);
             Destroy(this.gameObject);
         }
@@ -42,7 +43,7 @@ public class Projectile : MonoBehaviour
 
     public void SetDmg(int newDmg)
     {
-        dmg=newDmg;
+        dmg = newDmg;
     }
     public void SetTarget(Transform newTarget)
     {
