@@ -21,9 +21,8 @@ public class EnemyHealth : MonoBehaviour
         {            
             if(ratGenerator != null)
             {
-                ratGenerator.RatKilled();
+                scoresController.SetScores(health);
             }
-            scoresController.SetScores(health);
             Destroy(this.gameObject);
         }
         else

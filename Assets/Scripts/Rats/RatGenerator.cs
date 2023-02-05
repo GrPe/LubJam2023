@@ -46,10 +46,6 @@ public class RatGenerator : MonoBehaviour
         return ratsCount;
     }
 
-    public void RatKilled()
-    {
-        PlaceBuildings.Coins += 2;
-    }
     public ScoresController GetScoresController()
     {
         return scoresController;

@@ -1603,6 +1603,7 @@ MonoBehaviour:
   DecoyTower: {fileID: 2243470805246684102, guid: 4e5b182f5e213e042ad40aed740295d7, type: 3}
   Distance: 3
   Coins: 3
+  ScoresController: {fileID: 231441493}
   buildingsCache: {fileID: 1844359808}
 --- !u!1 &2008287927
 GameObject:
